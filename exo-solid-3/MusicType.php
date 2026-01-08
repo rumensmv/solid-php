@@ -1,4 +1,5 @@
 <?php
+require_once 'Exceptions.php';
 
 abstract class MusicType
 {

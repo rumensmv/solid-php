@@ -1,4 +1,6 @@
 <?php
+require_once 'Mp3.php';
+require_once 'Ogg.php';
 
 // Si on ajoute un nouveau format, cette classe ne change plus :-)
 class MusicReader
@@ -12,7 +14,7 @@ class MusicReader
         $extension = pathinfo($this->musicType->getFilename(), PATHINFO_EXTENSION);
         
         if (empty($extension)) {
-            throw new Exception('Les fichiers sans extension ne sont pas acceptés.');
+            throw new UnknownExtensionException("Fichier sans extension : " . $this->musicType->getFilename());
         }
     }
 

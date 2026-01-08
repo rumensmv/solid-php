@@ -7,8 +7,11 @@ class Mp3 extends MusicType
     public function listen()
     {
         $extension = pathinfo($this->filename, PATHINFO_EXTENSION);
+         if (empty($extension)) {
+            throw new UnknownExtensionException("Fichier sans extension : {$this->filename}");
+        }
         if ($extension !== 'mp3') {
-            throw new Exception("Fichier Mp3 attendu mais ''$extension'' obtenu");
+            throw new InvalidExtensionException("Fichier Mp3 attendu mais '$extension' obtenu");
         }
 
         return 'Lecture du fichier Mp3 '. $this->filename;

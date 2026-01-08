@@ -9,6 +9,8 @@ class Uploader
     private $type;
     public $directory = '';
     public $validTypes = [];
+    private $temporaryName;
+    public $error;
 
     public function __construct($file)
     {

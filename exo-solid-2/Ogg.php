@@ -1,15 +1,9 @@
 <?php
+require_once 'Music.php';
 
-class Ogg
+class Ogg extends Music
 {
-    private $filename;
-
-    public function __construct($filename)
-    {
-        $this->filename = $filename;
-    }
-
-    public function listen()
+    public function listen():string
     {
         return 'Lecture du fichier Ogg '. $this->filename;
     }

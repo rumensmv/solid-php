@@ -6,27 +6,27 @@ require_once 'Ogg.php';
 
 class MusicReader
 {
-    private $filename;
+    private Music $music;
 
     public function __construct($filename)
     {
-        $this->filename = $filename;
-    }
+         $extension = pathinfo($filename, PATHINFO_EXTENSION);
 
-    public function listen()
-    {
-        $extension = pathinfo($this->filename, PATHINFO_EXTENSION);
         switch ($extension) {
             case 'mp3':
-                $mp3 = new Mp3($this->filename);
-                return $mp3->listen();
+                $this->music = new Mp3($filename);
                 break;
             case 'ogg':
-                $ogg = new Ogg($this->filename);
-                return $ogg->listen();
+                $this->music = new Ogg($filename);
                 break;
             default:
                 throw new \Exception('Aucun lecteur trouvé pour cette musique');
         }
+        
+    }
+
+    public function listen():string
+    {
+        return $this->music->listen();
     }
 }

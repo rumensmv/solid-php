@@ -22,12 +22,4 @@ class PushEvent implements EventInterface
             'from' => 'https://github.com/api/v3/push',
         ];
     }
-
-    /**
-     * This event is not actionnable
-     */
-    public function action() : array
-    {
-        return [];
-    }
 }

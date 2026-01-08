@@ -1,6 +1,6 @@
 <?php
 
-class WatchEvent implements EventInterface
+class WatchEvent implements EventInterface, ActionnableEventInterface
 {
     public function name() : string
     {
